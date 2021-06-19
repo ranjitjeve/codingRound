@@ -5,61 +5,61 @@ var arr = [
     [4, 3],
 ];
 var sum = 0;
-getInput(arr, 130);
+getInput(arr, 30);
 
 function getInput(arr, passengersNo) {
     var temp = Array.isArray(arr);
     for (let i = 0; i < arr.length; i++) {
         get_Total_Number_of_seats(arr[i]);
     }
-    if (sum < passengersNo) {
-        return `Available seats are less than passengers in queue`;
-    } else {
-        if (temp) {
-            arr = JSON.stringify(arr);
-            var array = JSON.parse(arr);
-            var size_of_row = Math.max.apply(
-                Math,
-                array.map((e) => e[0])
-            );
-            var size_of_col = Math.max.apply(
-                Math,
-                array.map((e) => e[1])
-            );
+    //if (sum < passengersNo) {
+    //    return `Available seats are less than passengers in queue`;
+    // } else {
+    if (temp) {
+        arr = JSON.stringify(arr);
+        var array = JSON.parse(arr);
+        var size_of_row = Math.max.apply(
+            Math,
+            array.map((e) => e[0])
+        );
+        var size_of_col = Math.max.apply(
+            Math,
+            array.map((e) => e[1])
+        );
 
-            var seats = assign_Seat_Notation(array);
+        var seats = assign_Seat_Notation(array);
 
-            var obj = {};
-            obj = asign_Seat_Number(
-                "A",
-                1,
-                seats,
-                size_of_col,
-                size_of_row,
-                passengersNo
-            );
-            obj = asign_Seat_Number(
-                "W",
-                obj.counter,
-                obj.seats,
-                size_of_col,
-                size_of_row,
-                passengersNo
-            );
-            obj = asign_Seat_Number(
-                "M",
-                obj.counter,
-                obj.seats,
-                size_of_col,
-                size_of_row,
-                passengersNo
-            );
-            seats = obj.seats;
+        var obj = {};
+        obj = asign_Seat_Number(
+            "A",
+            1,
+            seats,
+            size_of_col,
+            size_of_row,
+            passengersNo
+        );
+        obj = asign_Seat_Number(
+            "W",
+            obj.counter,
+            obj.seats,
+            size_of_col,
+            size_of_row,
+            passengersNo
+        );
+        obj = asign_Seat_Number(
+            "M",
+            obj.counter,
+            obj.seats,
+            size_of_col,
+            size_of_row,
+            passengersNo
+        );
+        seats = obj.seats;
 
-            console.log(display_Plane_Seats(seats, size_of_col, size_of_row));
-        }
-        return temp;
+        console.log(display_Plane_Seats(seats, size_of_col, size_of_row));
     }
+    return temp;
+    //}
 }
 
 function get_Total_Number_of_seats(arr) {
